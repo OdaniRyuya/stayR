@@ -1,0 +1,18 @@
+<%= render "shared/header" %>
+
+<div class="rooms-container">
+  <h4>検索結果:<%= @search_rooms.count %>件</h4>
+  <ul class="room-list">
+    <% @search_rooms.each do |r| %>
+    <%= link_to r, class: "room-item" do %>
+    <p class="image"><img src="<%= r.image %>"></p>
+    <div class="list-inner">
+      <p class="title"><%= r.title %></p>
+      <p class="address"><%= r.address %></p>
+      <p class="price">¥<%= r.price %></p>
+    </div><!-- /.list-inner -->
+    <% end %>
+    <% end %>
+  </ul><!-- /.room-list -->
+</div><!-- /.rooms-container -->
+<%= render "shared/footer" %>

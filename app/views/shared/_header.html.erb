@@ -1,0 +1,49 @@
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo">
+      <%= link_to image_tag('/assets/logo.png'), '/' %>
+    </div><!-- /.header-logo -->
+    <div class="room_search">
+      <%= search_form_for @search, url: rooms_path do |f| %>
+      <p><%= f.text_field :address_cont ,placeholder: 'エリア' %></p>
+      <p><%= f.text_field :address_or_title_or_comment_cont ,placeholder: 'キーワード' %></p>
+      <p><%= f.submit ("検索") , class: 'search-btn'%></p>
+      <% end %>
+    </div>
+  </div><!-- /.header-left -->
+  <% if user_signed_in? %>
+  <!-- ユーザーがログインしているか調べる -->
+  <div class="header-right">
+    <div class="header-user-name"><%= current_user.name %> </div><!-- /.header-user-name -->
+    <div class="header-user-drawer">
+      <p class="header-user-icon"><img src=<%= current_user.image %>></p>
+    </div><!-- /.header-user-icon -->
+    <ul class="header-user-menu">
+      <li class="header-user-list"><%= link_to "ルーム登録", :new_room %></li><!-- /.header-user-menu -->
+      <li class="header-user-list"><%= link_to "予約済みルーム一覧", reservations_path %></li><!-- /.header-user-menu -->
+      <li class="header-user-list"><%= link_to "登録済みルーム一覧", :rooms_post %></li><!-- /.header-user-menu -->
+      <li class="header-user-list"><%= link_to "プロフィール", :edit_user_registration %></li><!-- /.header-user-menu -->
+      <li class="header-user-list"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <!-- ログアウトをする -->
+      </li><!-- /.header-user-menu -->
+    </ul><!-- /.header-user-menu -->
+  </div><!-- /.header-right -->
+  <% else %>
+  <div class="header-right">
+    <%= link_to "ログイン", new_user_session_path, class: 'post login' %>
+    <!-- ログイン画面に移行する -->
+    <%= link_to "新規登録", new_user_registration_path, class: 'post new-account' %>
+    <!-- 新規登録画面に移行する -->
+  </div><!-- /.header-right -->
+  <% end %>
+</header>
+
+<script type="text/javascript">
+  $(function () {
+    //ボタンのイベント
+    $(".header-user-icon").click(function () {
+      // sampleAクラスをスライドアップ/ダウンさせる
+      $(".header-user-menu").toggle();
+    });
+  });
+</script>

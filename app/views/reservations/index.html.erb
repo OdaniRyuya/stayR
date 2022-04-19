@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+
+<div class="rooms-reservation-container">
+  <h4>予約済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>予約確定日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+      <tr>
+        <td>
+          <%= link_to room_path(reservation.room.id), class:"room-table" do %>
+          <img src="<%= reservation.room.image %>">
+          <% end %>
+        </td>
+        <td>
+          <%= link_to room_path(reservation.room.id), class:"room-table" do %>
+          <%= reservation.room.title %>
+          <% end %>
+        </td>
+        <td><%= reservation.room.comment %></td>
+        <td>¥<%= reservation.room.price * reservation.people %></td>
+        <td><%= reservation.start_day.to_s(:custom) %></td>
+        <td><%= reservation.end_day.to_s(:custom) %></td>
+        <td><%= reservation.created_at.to_s(:default) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div><!-- /.room-index -->
+<%= render "shared/footer" %>

@@ -1,0 +1,8 @@
+<% if obj.errors.any? %>
+<% obj.errors.full_messages.each do |message| %>
+<div class="field-error">
+  <label><%= message %></label>
+</div><!-- /.field -->
+
+<% end %>
+<% end %>

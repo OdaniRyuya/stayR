@@ -1,0 +1,23 @@
+<%= render "shared/header" %>
+<div class="confirm">
+  <h3>予約完了しました</h3>
+  <div class="confirm-container">
+    <div class="filed">
+      <label for="">予約した部屋</label>
+      <p><%= $room.title %></p>
+    </div><!-- /.filed -->
+    <div class="filed">
+      <label for="">開始日</label>
+      <p><%= $reservation.start_day.to_s(:custom) %></p>
+    </div><!-- /.filed -->
+    <div class="filed">
+      <label for="">終了日</label>
+      <p><%= $reservation.end_day.to_s(:custom) %></p>
+    </div><!-- /.filed -->
+    <div class="filed">
+      <label for="">価格</label>
+      <p><%= $room.price * $reservation.people %></p>
+    </div><!-- /.filed -->
+  </div><!-- /.confirm-container -->
+</div><!-- /.confirm -->
+<%= render "shared/footer" %>
