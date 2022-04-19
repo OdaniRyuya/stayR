@@ -1,0 +1,20 @@
+<%= render "shared/header" %>
+
+<div class="reservation-new">
+  <div class="reservation-new-container">
+    <h4>予約内容確認</h4>
+    <h5>¥<%= $room.price %>/日</h5>
+    <p class="">開始日</p>
+    <label><%= $reservation.start_day.to_s(:custom) %></label>
+    <p>終了日</p>
+    <label><%= $reservation.end_day.to_s(:custom) %></label>
+    <h6>使用日数:<%= @result_day %> 日</h6>
+    <h6>人数:<%= $reservation.people %>人</h6>
+    <p>合計金額</p>
+    <label><%= $room.price * $reservation.people %></label>
+    <p class="text">上記内容でよろしければ「予約を確定」を押してください</p>
+    <%= link_to "予約を確定", :reservations_completed, class: "confirm" %>
+    <%= link_to "ルーム詳細に戻る", :back %>
+  </div><!-- /.reservation-new-container -->
+</div><!-- /.reservation-new -->
+<%= render "shared/footer" %>

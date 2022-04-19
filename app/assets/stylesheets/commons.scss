@@ -1,0 +1,708 @@
+@charset "utf-8";
+
+/*==========================================================================
+# reset - ブラウザの差異や不要なスタイルを無くすためのスタイル
+========================================================================== */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+li,
+dt,
+dd,
+p,
+div,
+span,
+img,
+a,
+table,
+tr,
+th,
+td,
+small,
+button,
+time,
+figure {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+li,
+dd {
+  list-style-type: none;
+}
+
+header,
+footer,
+nav,
+section,
+article,
+aside,
+figure,
+figcaption {
+  display: block;
+}
+
+img {
+  border: none;
+  vertical-align: bottom;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+input:hover {
+  opacity: 0.8;
+}
+
+a:visited,
+a:link {
+  color: inherit;
+}
+
+/*================================
+ヘッダー
+=================================*/
+
+.header {
+  z-index: 11;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+
+  &-right {
+    display: flex;
+    margin-top: 15px;
+  }
+
+  &-user-icon {
+    position: relative;
+  }
+
+  &-user-name {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: #fff;
+  }
+
+  &-user-menu {
+    z-index: 1;
+    background-color: #fff;
+    position: absolute;
+    display: none;
+    margin-top: 90px;
+    line-height: 2;
+    width: 230px;
+    right: -30px;
+    padding: 10px;
+  }
+
+  .room_search {
+    display: flex;
+
+    .search-btn {
+      cursor: pointer;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+    }
+  }
+
+  &-left {
+    display: flex;
+
+    input {
+      height: 40px;
+      margin-top: 18px;
+      margin-right: 20px;
+    }
+  }
+
+
+  .post {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .login {
+    background-color: #4a90e2;
+    height: 40px;
+
+  }
+
+  .new-account {
+    height: 40px;
+    margin-left: 20px;
+    background-color: #6c757d;
+  }
+
+  &-user-icon {
+    img {
+      width: 70px;
+      height: 70px;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+  }
+}
+
+/*================================
+トップ画面
+=================================*/
+.home {
+  background-image: image-url('home-bg.jpg');
+  background-size: cover;
+  height: 660px;
+  display: flex;
+  align-items: center;
+
+  &-container {
+    padding: 20px;
+    background-color: #fff;
+    width: 500px;
+    border-radius: 5px;
+    margin-left: 40px;
+
+    h2 {
+      font-size: 25px;
+      line-height: 1.4;
+    }
+
+    label {
+      margin-top: 20px;
+      display: block;
+    }
+
+    input {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      height: 37px;
+      border-radius: 5px;
+      border: 1px solid #6c757d;
+      font-size: 18px;
+    }
+
+    .home-submit {
+      background-color: #4a90e2;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+    }
+
+  }
+}
+
+/*================================
+ルーム一一覧&ルーム検索
+=================================*/
+.rooms-container {
+  width: 90%;
+  margin: 0 auto;
+
+  h4 {
+    font-size: 26px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+    max-width: 1300px;
+    margin-left: 20px;
+
+  }
+
+  .room-item {
+    border: 1px solid #eaedef;
+    flex-grow: 1;
+    width: 30%;
+    min-width: 300px;
+    max-width: 700px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    .list-inner {
+      padding: 15px 15px 30px 15px;
+    }
+
+    .title {
+      font-size: 18px;
+      color: #6c757d;
+      font-weight: bold;
+    }
+
+    .address {
+      padding-top: 10px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .price {
+      text-align: right;
+      padding-top: 20px;
+    }
+  }
+
+  .image {
+    height: 190px;
+    background-color: #F6F8F9;
+  }
+
+  img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    margin-top: 20px;
+  }
+}
+
+
+/*================================
+登録済みルーム一覧、予約済みルーム一覧
+=================================*/
+.rooms-post-container,
+.rooms-reservation-container {
+  padding: 70px 60px 130px;
+  max-width: 100vw;
+
+
+  img {
+    width: 240px;
+    height: 130px;
+    object-fit: cover;
+  }
+
+  thead {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  tbody {
+    font-size: 12px;
+  }
+
+  table {
+    min-width: 800px;
+    border-collapse: collapse;
+    display: table;
+    width: 100%;
+  }
+
+  tr {
+    border-top: solid 1px #eaedef;
+    border-bottom: solid 1px #eaedef;
+  }
+
+  th {
+    padding: 17px 0;
+  }
+
+  td {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 8px 30px;
+  }
+
+  h4 {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  .room-table {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: underline;
+    font-size: 18px;
+    color: #4a90e2;
+  }
+}
+
+/*================================
+ログイン画面&サインアップ画面 (device)
+=================================*/
+.device-container {
+  width: 500px;
+  padding: 50px 100px;
+  margin: 50px auto;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .field {
+    margin: 0 auto;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    margin-top: 5px;
+    height: 27px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ced4da
+  }
+
+  .actions {
+    input {
+      background-color: #4a90e2;
+      color: #fff;
+      height: 50px;
+      font-size: 17px;
+    }
+  }
+
+  .login-redirect {
+    margin: 20px auto;
+    width: 400px;
+
+    a {
+      color: #4a90e2;
+    }
+  }
+
+  .new-account-redirect {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  a {
+    color: #4a90e2;
+  }
+}
+
+/*================================
+ルーム登録画面
+=================================*/
+.new-room {
+  background-color: #eaedef;
+  padding: 30px 0;
+
+  h3 {
+    font-size: 24px;
+    margin-bottom: 50px;
+  }
+
+  &-container {
+    background-color: #fff;
+    width: 95%;
+    margin: 0 auto;
+    padding: 30px;
+  }
+
+  .field {
+    width: 100%;
+    font-size: 16px;
+    border-top: 1px #ced4da solid;
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .field-error {
+    label {
+      padding-bottom: 25px;
+    }
+  }
+
+  label {
+    width: 250px;
+    display: inline-block;
+    font-weight: bold;
+
+  }
+
+  input,
+  textarea {
+    width: 600px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  #room_image {
+    border: none;
+  }
+
+  &-submit {
+    input {
+      width: 100px;
+      background-color: #4a90e2;
+      color: #fff;
+      width: 180px;
+      height: 50px;
+      line-height: 50px;
+      cursor: pointer;
+    }
+  }
+}
+
+/*================================
+ルーム詳細画面
+=================================*/
+.room-show {
+  margin-top: 30px;
+
+  .room-container {
+    background-color: #fff;
+    width: 95%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+
+    .room-dates {
+      width: 66%;
+
+      .room-image {
+        img {
+          width: 100%;
+          height: 280px;
+          object-fit: cover;
+        }
+      }
+
+      .list-inner-top {
+        display: flex;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+
+        .room-title-address {
+          margin-left: 20px;
+
+          .title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      .list-inner-bottom {
+        padding: 30px 0;
+        border-top: #ced4da solid 1px;
+        border-bottom: #ced4da solid 1px;
+      }
+    }
+
+    .room-reservation {
+      width: 31%;
+      margin-left: auto;
+
+      &-inner {
+        padding: 28px 16px;
+        border: 1px solid #ced4da;
+
+        .price {
+          font-size: 22px;
+          margin-bottom: 27px;
+        }
+
+        label,
+        input {
+          display: block;
+
+        }
+
+        label {
+          font-size: 14px;
+          margin-bottom: 14px;
+        }
+
+        input {
+          width: 100%;
+          height: 34px;
+          margin-bottom: 17px;
+          border: 1px solid #ced4da;
+          border-radius: 5px;
+        }
+
+        .new-room-submit {
+          input {
+            line-height: 34px;
+            border: none;
+            font-size: 20px;
+            border-radius: 5px;
+          }
+        }
+
+        .notice {
+          padding-bottom: 13px;
+        }
+
+        .login-alert {
+          font-size: 22px;
+          padding-bottom: 7px;
+        }
+      }
+    }
+  }
+}
+
+/*================================
+予約内容確認画面
+=================================*/
+.reservation-new {
+  .reservation-new-container {
+    padding: 20px;
+    width: 350px;
+    margin: 30px auto 0;
+    border: 1px solid #eaedef;
+
+    h4 {
+      font-size: 24px;
+      border-bottom: 1px solid #eaedef;
+      padding-bottom: 20px;
+    }
+
+    h5 {
+      font-size: 20px;
+      padding: 20px 0;
+    }
+
+    h6 {
+      font-size: 18px;
+      border-bottom: 1px solid #ced4da;
+      padding: 20px 0;
+    }
+
+    p {
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    label {
+      background-color: #eaedef;
+      width: 100%;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ced4da;
+      margin-bottom: 20px;
+    }
+
+    .text {
+      font-size: 13px;
+      line-height: 1.6;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ced4da;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+      line-height: 36px;
+      text-align: center;
+      background-color: #6c757d;
+      color: #fff;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      padding: 0;
+    }
+
+    .confirm {
+      background-color: #4a90e2;
+      margin-top: 40px;
+    }
+  }
+}
+
+/*================================
+予約確定画面
+=================================*/
+.confirm {
+  background-color: #eaedef;
+  padding: 20px 0;
+  margin-top: 40px;
+  margin-bottom: 200px;
+
+  h3 {
+    font-size: 17px;
+    margin-bottom: 20px;
+    margin-left: 80px;
+  }
+
+  &-container {
+    background-color: #fff;
+    width: 90%;
+    margin: 0 auto;
+
+    .filed {
+      margin: 0 0 0 20px;
+      border-bottom: 1px solid #ced4da;
+      display: flex;
+      padding: 25px 0;
+
+      label {
+        width: 170px;
+      }
+    }
+  }
+}
+
+
+/*================================
+  フッター
+  =================================*/
+footer {
+  height: 200px;
+  background-color: #000;
+  text-align: center;
+
+  p {
+    line-height: 200px;
+    font-size: 14px;
+    color: #fff;
+  }
+}

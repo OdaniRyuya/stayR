@@ -1,0 +1,50 @@
+<%= render "shared/header" %>
+
+<div class="room-show">
+  <div class="room-container">
+    <div class="room-dates">
+      <p class="room-image"><img src="<%= $room.image %>"></p>
+      <div class="list-inner-top">
+        <p class="header-user-icon"><img src=<%= $room.user.image %>></p>
+        <div class="room-title-address">
+          <p class="title"><%= $room.title %></p>
+          <p class="address"><%= $room.address %></p>
+        </div> <!-- /.room-title-address -->
+      </div><!-- /.list-inner-top -->
+      <div class="list-inner-bottom">
+        <p class="comment"><%= $room.comment %></p>
+      </div><!-- /.list-inner-bottom -->
+    </div><!-- /.room-date -->
+    <div class="room-reservation">
+      <div class="room-reservation-inner">
+        <% if user_signed_in? %>
+        <p class="price">¥<%= $room.price %>/日</p>
+        <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+        <% end %>
+        <%= form_with model: $reservation do |f| %>
+        <div class="field">
+          <%= f.label :start_day ,"開始日"%>
+          <%= f.date_field :start_day %>
+        </div><!-- /.field -->
+        <div class="field">
+          <%= f.label :end_day ,"終了日" %>
+          <%= f.date_field :end_day %>
+        </div><!-- /.field -->
+        <div class="field">
+          <%= f.label :people ,"人数" %>
+          <%= f.number_field :people %>
+          <%= f.hidden_field :room_id, value: $room.id %>
+        </div><!-- /.field -->
+        <div class="new-room-submit">
+          <li><%= f.submit "予約する" %></li>
+        </div><!-- /.new-room-submit -->
+        <% end %>
+        <% else %>
+        <p class="login-alert">予約にはログインが必要です</p>
+        <% end %>
+      </div><!-- /.room-reservation-inner -->
+    </div><!-- /.room-reservation -->
+  </div><!-- /.room-container -->
+</div><!-- /.room-show -->
+<%= render "shared/footer" %>

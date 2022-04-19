@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+<div class="rooms-post-container">
+  <h4>登録済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |r| %>
+      <tr>
+        <td>
+          <%= link_to r, class:"room-table" do %>
+          <img src="<%= r.image %>">
+          <% end %>
+        </td>
+        <td>
+          <%= link_to r, class:"room-table" do %>
+          <%= r.title %>
+          <% end %>
+        </td>
+        <td><%= r.comment %></td>
+        <td>¥<%= r.price %></td>
+        <td><%= r.created_at.to_s(:default) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div><!-- /.room-index -->
+<%= render "shared/footer" %>

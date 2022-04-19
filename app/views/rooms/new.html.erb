@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+<section class="new-room">
+  <div class="new-room-container">
+    <h3>ルーム登録情報</h3>
+    <%= render "shared/error", obj: @room %>
+    <%= form_with model: @room do |f| %>
+    <div class="field">
+      <%= f.label :title ,"ルーム名"%>
+      <%= f.text_field :title %>
+    </div><!-- /.field -->
+    <div class="field">
+      <%= f.label :comment ,"ルーム紹介" %>
+      <%= f.text_area :comment %>
+    </div><!-- /.field -->
+    <div class="field">
+      <%= f.label :address ,"住所" %>
+      <%= f.text_field :address %>
+    </div><!-- /.field -->
+    <div class="field">
+      <%= f.label :price ,"料金" %>
+      <%= f.number_field :price %>
+    </div><!-- /.field -->
+    <div class="field">
+      <%= f.label :image ,"ルーム画像" %>
+      <%= f.file_field :image %>
+    </div><!-- /.field -->
+    <div class="new-room-submit">
+      <li><%= f.submit "登録完了する" %></li>
+    </div><!-- /.new-room-submit -->
+    <% end %>
+  </div><!-- /.new-room-container -->
+</section><!-- /.new-room -->
+<%= render "shared/footer" %>
